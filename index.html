@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaLearn | Language Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<header class="header">
+    <div class="brand">🌍 LinguaLearn</div>
+    <h1>Speak a lot.</h1>
+    <p>Learn words in 21 languages with flashcards, search, pronunciation and quizzes.</p>
+</header>
+
+<main class="container">
+    <section class="dashboard card">
+        <div class="dashboard-heading">
+            <div><span class="eyebrow">YOUR JOURNEY</span><h2>Learning progress</h2></div>
+            <strong id="progressText">0%</strong>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="stats">
+            <div class="stat"><span>✓</span><strong id="learnedCount">0</strong><small>Words learned</small></div>
+            <div class="stat"><span>★</span><strong id="bestScore">0/0</strong><small>Best quiz score</small></div>
+            <div class="stat"><span>↗</span><strong id="quizCount">0</strong><small>Quizzes completed</small></div>
+        </div>
+    </section>
+
+    <nav class="tabs" aria-label="Main navigation">
+        <button class="tab active" data-view="learnView">📚 Learn</button>
+        <button class="tab" data-view="quizView">🧠 Quiz</button>
+        <button class="tab" data-view="progressView">📈 Progress</button>
+    </nav>
+
+    <!-- Learn -->
+    <section id="learnView" class="view card">
+        <div class="section-heading"><div><span class="eyebrow">FLASHCARDS</span><h2>Build your vocabulary</h2></div></div>
+
+        <div class="selectors">
+            <label>Language <select id="language"></select></label>
+            <label>Category
+                <select id="category">
+                    <option value="vocabulary">Vocabulary</option>
+                    <option value="grammar">Phrases &amp; grammar</option>
+                    <option value="mywords">My words</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="search-row">
+            <input type="text" id="searchInput" placeholder="Search an English word or phrase" maxlength="100">
+            <button id="searchBtn" class="btn primary">🔍 Search</button>
+        </div>
+        <p id="searchStatus" class="status" role="status"></p>
+        <div id="searchResult" class="search-result hidden">
+            <p id="searchWord" class="big"></p>
+            <p id="searchMeaning" class="muted"></p>
+            <div class="button-row">
+                <button id="searchListenBtn" class="btn">🔊 Listen</button>
+                <button id="addWordBtn" class="btn success">＋ Add to My words</button>
+            </div>
+        </div>
+
+        <p id="cardCounter" class="counter"></p>
+        <div class="flashcard">
+            <p id="word" class="word"></p>
+            <p id="pronunciation" class="pronunciation"></p>
+            <div id="meaningBox" class="meaning-box hidden"><p id="meaning" class="meaning"></p></div>
+        </div>
+
+        <div class="button-row">
+            <button id="meaningBtn" class="btn primary">Show meaning</button>
+            <button id="listenBtn" class="btn">🔊 Listen</button>
+        </div>
+        <button id="learnedBtn" class="btn wide">✓ Mark as learned</button>
+        <div class="button-row">
+            <button id="prevBtn" class="btn">← Previous</button>
+            <button id="nextBtn" class="btn">Next →</button>
+        </div>
+        <p id="notice" class="notice" role="status"></p>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quizView" class="view card hidden">
+        <div class="section-heading"><div><span class="eyebrow">PRACTICE</span><h2>Test yourself</h2></div></div>
+        <div class="selectors">
+            <label>Quiz language <select id="quizLanguage"></select></label>
+            <label>Category
+                <select id="quizCategory">
+                    <option value="vocabulary">Vocabulary</option>
+                    <option value="grammar">Phrases &amp; grammar</option>
+                    <option value="mywords">My words</option>
+                </select>
+            </label>
+        </div>
+        <button id="startQuizBtn" class="btn primary wide" style="margin-top:14px">Start quiz</button>
+        <p id="quizStatus" class="status" role="status"></p>
+
+        <div id="quizPanel" class="hidden">
+            <div class="quiz-top"><span id="quizCounter"></span><span id="quizScore"></span></div>
+            <div class="progress-track"><div id="quizProgressBar" class="progress-bar"></div></div>
+            <h3 id="quizQuestion" class="quiz-question"></h3>
+            <div id="quizOptions" class="quiz-options"></div>
+            <p id="quizFeedback" class="feedback" role="status"></p>
+            <button id="quizNextBtn" class="btn primary wide" disabled>Next question →</button>
+        </div>
+
+        <div id="quizResult" class="quiz-result hidden">
+            <h3 id="resultTitle"></h3>
+            <p id="resultScore" class="result-score"></p>
+            <p id="resultMessage"></p>
+            <button id="retryQuizBtn" class="btn primary wide">Try again</button>
+        </div>
+    </section>
+
+    <!-- Progress -->
+    <section id="progressView" class="view card hidden">
+        <div class="section-heading"><div><span class="eyebrow">YOUR WORDS</span><h2>Learned words</h2></div></div>
+        <p id="learnedEmpty" class="muted">No words learned yet. Mark a flashcard as learned to see it here.</p>
+        <ul id="learnedList" class="learned-list"></ul>
+        <button id="resetBtn" class="btn danger wide">Reset progress</button>
+    </section>
+</main>
+
+<footer class="footer">LinguaLearn: a practice project. Translations by MyMemory.</footer>
+</body>
+</html>
